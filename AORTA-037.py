@@ -2,6 +2,7 @@ import time
 from pathlib import Path
 import os
 import ast
+import pickle
 
 def load():
     #globals
