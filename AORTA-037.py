@@ -280,4 +280,3 @@ print()
 time.sleep(5)
 
 cellArea(jamesInteract, jamesInitiate, jamesName, jamesKnife, pillowUsed)
-
