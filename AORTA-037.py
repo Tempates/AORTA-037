@@ -135,16 +135,16 @@ while True:
                 print("It flushed pretty well")
                 time.sleep(1)
             if choice == "b":
-                if james_Interact:
+                if jamesInteract:
                     print("J-Sack: Don't do that in front of me!")
                 else:
                     print("???: Don't do that in front of me!")
                 time.sleep(1)
         elif choice == "b":
-            james_Initiate = True
-            while james_Initiate:
-                if not james_Interact:
-                    if not james_Name:
+            jamesInitiate = True
+            while jamesInitiate:
+                if not jamesInteract:
+                    if not jamesName:
                         input("???: Who are YOU?")
                         print("=============================")
                         print("A - No, who are YOU?")
@@ -156,8 +156,8 @@ while True:
                         if choice == "a":
                             input("???: James Sackman, but around these parts, it's J-Sack... Got it fish?")
                             input(name+": Got it.")
-                            james_Interact = True
-                            james_Initiate = False
+                            jamesInteract = True
+                            jamesInitiate = False
                         elif choice == "b":
                             input("???: No, my mum is at home eating Libby.")
                             print("===================================================")
@@ -170,9 +170,9 @@ while True:
                         elif choice == "c":
                             input("???: And what is my cell mate's name??")
                             input(name+": Freddy McBumfuzzle")
-                            james_Name = True
+                            jamesName = True
                         elif choice == "d":
-                            james_Initiate = False
+                            jamesinitiate = False
                     else:
                         input("???: Ok, Freddy McBumfuzzle...")
                         print("=========================================")
@@ -183,25 +183,25 @@ while True:
                         if choice == "a":
                             input("???: James Sackman, but around these parts, it's J-Sack... Got it fish?")
                             input(name+": Got it.")
-                            james_Interact = True
-                            james_Initiate = False
+                            jamesInteract = True
+                            jamesInitiate = False
                         elif choice == "b":
                             input('???: Ugh, fine... You do you buddy.')
-                            james_Initiate = False
+                            jamesInitiate = False
                 else:
-                    if james_Name:
-                        if not james_Knife:
+                    if jamesName:
+                        if not jamesKnife:
                             input("J-Sack: Hey, I like you kid. just incase you run into some nasty goons or violent COs, I've got a cool little knife i made back in the psych ward, ya want it?")
                             input("Aquired: Make-Shift Knife!")
                             inventory.append("Make-Shift Knife")
                             input("J-Sack: Ya gotta keep yourself safe kid, they ain't playin' games.")
                             input("J-Sack: It's a rough place out there.")
                             input(name+": This'll come in handy...")
-                            james_Knife = True
-                            james_Initiate = False
+                            jamesKnife = True
+                            jamesInitiate = False
                         else:
                             input("J-Sack: Take a walk kid. What you want, I don't have..")
-                            james_Initiate = False
+                            jamesInitiate = False
                     else:
                         input("J-Sack: Who are YOU?")
                         print("=============================")
@@ -222,10 +222,10 @@ while True:
                         elif choice == "b":
                             input("???: And what is my cell mate's name??")
                             input(name+": Freddy McBumfuzzle")
-                            james_Name = True
-                            james_Initiate = False
+                            jamesName = True
+                            jamesInitiate = False
                         elif choice == "c":
-                            james_Initiate = False
+                            jamesInitiate = False
         elif choice == "c":
             input("I'm getting the bottom bunk, every new fish in AORTA gets put there...")
             print("==============================================================================")
@@ -245,7 +245,7 @@ while True:
                     input("but on closer inspection, you notice that ther are glowing, cursed-looking engravings carved into the body of the wrench. you feel mesmerised...")
                     input("peculiar...")
             elif choice == "a":
-                if not pillow_Used:
+                if not pillowUsed:
                     input(name+": It's my pillow, I can store contraband in here if I want to.")
                 else:
                     input("Should I put something in here?")
@@ -255,7 +255,7 @@ while True:
                 print("===========================================================================")
                 choice = str(input("> ")).lower()
                 if choice == "a":
-                    pillow_Used = True
+                    pillowUsed = True
                     if inventory:
                         for item in inventory:
                             print("=============================")
@@ -270,7 +270,7 @@ while True:
                     else:
                         input(name+": I don't have anything to put in here")
         elif choice == "d":
-            if not james_Interact:
+            if not jamesInteract:
                 input(name+": There are cracks on the wall, I wonder how long my weird cell-buddy has been in here...")
             else:
                 input(name+": These walls aren't that durable if I remember correctly")
