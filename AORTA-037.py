@@ -1,35 +1,55 @@
 #Imports
 import time
+from pathlib import Path
+import json
 
 #Globals
-global cell
+data = {
+    #Areas
+    "cell": True,
 
-#Areas
-cell = True
+    #Variables
 
-#Variables
-jamesInteract = False
-jamesInitiate = False
-jamesName = False
-jamesKnife = False
-inventory = []
-pillowInventory = []
-pillowUsed = False
+    "brName": "",
+    "name": "",
+
+    "jamesInteract": False,
+    "jamesInitiate": False,
+    "jamesName": False,
+    "jamesKnife": False,
+    "inventory": [],
+    "pillowInventory": [],
+    "pillowUsed": False,
+}
+
+#savedata paths
+savepath = Path("./savedata.json")
+gamepath = Path("./gamedata.json")
+
+def save():
+    pass
+
+
+def load():
+    pass
+
+
+#game start
 
 
 #game intro
 print("What is your name?")
-brName = str(input("> ").capitalize())
+data["brName"] = str(input("> ").capitalize())
 time.sleep(2)
 print("What is your brothers name?")
-name = str(input("> ")).capitalize()
+data["name"] = str(input("> ")).capitalize()
 time.sleep(2)
 print()
 input("<<PRESS ENTER TO CONTINUE DIALOGUE>>")
 print()
-input("Five days from now, They strap my brother "+brName+" to an electric chair...")
+input("Five days from now, They strap my brother "+data["brName"]+" to an electric chair...")
 input("50,000 Volts coursing through his body...")
-input(name+": I'm here to make sure that doesn't happen.")
+input(data["name"]+": I'm here to make sure that doesn't happen.")
 print()
 print("==============")
 print("─────████─────")
@@ -62,7 +82,7 @@ print("░░░░░░░░░░░░░░░░░░░░░░░█�
 print("=======================================")
 print()
 input("Upon his escape, He was quickly abducted by a mysterious figure, known as L. Cole.")
-input(brName+" was placed behind bars, trapped in the inescapable labyrinth known as the 'A.O.R.T.A Juvenile Detention Centre' for Misbehaved younglings.")
+input(data["brName"]+" was placed behind bars, trapped in the inescapable labyrinth known as the 'A.O.R.T.A Juvenile Detention Centre' for Misbehaved younglings.")
 input('He was doomed for death. The place hosted some of the nastiest, most devious boys humanity can produce.')
 input("They say it is impossible to escape...")
 input('...')
@@ -81,7 +101,7 @@ time.sleep(5)
 
 #game loop
 while True:
-    while cell:
+    while data["cell"]:
         input("!! CELL !!")
         print("============================================================================================================")
         print("███▒▒▒▒▒▒▒▒▒██████▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒████▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒███████▒▒▒▒▒▒▒▒▒▒▒█")
@@ -112,9 +132,9 @@ while True:
         print("██▒█░░░░░░░░░░░▒▒░░░░░█║║║█║║║█░░░░░░▒▒▒▒▒▒▒▒░░░░░░░░░░░░░░░░▒▒░░░░░░░░░░░█│█│││││││││││││██░░░░▒▒▒▒░░░░░▀█▒")
         print("█▄█░░░░░░░░░░░░░░░░░░░█┼┼┼█┼┼┼█░░░░░░░░░▒▒░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░█████████████████░░░░▒▒▒░░░░░░░░▌")
         print("============================================================================================================")
-        print("Inventory:",*inventory, sep=', ')
-        if pillowInventory:
-            print("Pillow Inventory: ",*pillowInventory, sep=', ')
+        print("Inventory:",*data["inventory"], sep=', ')
+        if data["pillowInventory"]:
+            print("Pillow Inventory: ",*data["pillowInventory"], sep=', ')
         print("============================================================================================================")
         print("A - Toilet")
         print("B - Cellmate")
@@ -155,7 +175,7 @@ while True:
                         choice = str(input("> ")).lower()
                         if choice == "a":
                             input("???: James Sackman, but around these parts, it's J-Sack... Got it fish?")
-                            input(name+": Got it.")
+                            input(data["name"]+": Got it.")
                             jamesInteract = True
                             jamesInitiate = False
                         elif choice == "b":
@@ -169,7 +189,7 @@ while True:
                                 input("???: Sister.")
                         elif choice == "c":
                             input("???: And what is my cell mate's name??")
-                            input(name+": Freddy McBumfuzzle")
+                            input(data["name"]+": Freddy McBumfuzzle")
                             jamesName = True
                         elif choice == "d":
                             jamesinitiate = False
@@ -182,7 +202,7 @@ while True:
                         choice = str(input("> ")).lower()
                         if choice == "a":
                             input("???: James Sackman, but around these parts, it's J-Sack... Got it fish?")
-                            input(name+": Got it.")
+                            input(data["name"]+": Got it.")
                             jamesInteract = True
                             jamesInitiate = False
                         elif choice == "b":
@@ -193,10 +213,10 @@ while True:
                         if not jamesKnife:
                             input("J-Sack: Hey, I like you kid. just incase you run into some nasty goons or violent COs, I've got a cool little knife i made back in the psych ward, ya want it?")
                             input("Aquired: Make-Shift Knife!")
-                            inventory.append("Make-Shift Knife")
+                            data["inventory"].append("Make-Shift Knife")
                             input("J-Sack: Ya gotta keep yourself safe kid, they ain't playin' games.")
                             input("J-Sack: It's a rough place out there.")
-                            input(name+": This'll come in handy...")
+                            input(data["name"]+": This'll come in handy...")
                             jamesKnife = True
                             jamesInitiate = False
                         else:
@@ -221,7 +241,7 @@ while True:
                                 input("???: Sister.")
                         elif choice == "b":
                             input("???: And what is my cell mate's name??")
-                            input(name+": Freddy McBumfuzzle")
+                            input(data["name"]+": Freddy McBumfuzzle")
                             jamesName = True
                             jamesInitiate = False
                         elif choice == "c":
@@ -234,7 +254,7 @@ while True:
             print("==============================================================================")
             choice = str(input("> ")).lower()
             if choice == "b":
-                input(name+": A rusty wrench... Mysterious...")
+                input(data["name"]+": A rusty wrench... Mysterious...")
                 print("========================================")
                 print("A - Inspect mystical wrench")
                 print("B - Leave")
@@ -246,7 +266,7 @@ while True:
                     input("peculiar...")
             elif choice == "a":
                 if not pillowUsed:
-                    input(name+": It's my pillow, I can store contraband in here if I want to.")
+                    input(data["name"]+": It's my pillow, I can store contraband in here if I want to.")
                 else:
                     input("Should I put something in here?")
                 print("===========================================================================")
@@ -256,23 +276,23 @@ while True:
                 choice = str(input("> ")).lower()
                 if choice == "a":
                     pillowUsed = True
-                    if inventory:
-                        for item in inventory:
+                    if data["inventory"]:
+                        for item in data["inventory"]:
                             print("=============================")
                             print("A - Store "+item+"?")
                             print("B - Don't Store "+item+"?")
                             print("=============================")
                             choice = str(input("> ")).lower()
                             if choice == "a":
-                                inventory.remove(item)
-                                pillowInventory.append(item)
+                                data["inventory"].remove(item)
+                                data["pillowInventory"].append(item)
                                 input("Stored "+item+"!")
                     else:
-                        input(name+": I don't have anything to put in here")
+                        input(data["name"]+": I don't have anything to put in here")
         elif choice == "d":
             if not jamesInteract:
-                input(name+": There are cracks on the wall, I wonder how long my weird cell-buddy has been in here...")
+                input(data["name"]+": There are cracks on the wall, I wonder how long my weird cell-buddy has been in here...")
             else:
-                input(name+": These walls aren't that durable if I remember correctly")
+                input(data["name"]+": These walls aren't that durable if I remember correctly")
         elif choice == "e":
-            input(name+": These bars lead to... Nowhere, there is literally no sign of the outside world when looking out these bars")
+            input(data["name"]+": These bars lead to... Nowhere, there is literally no sign of the outside world when looking out these bars")
