@@ -9,10 +9,8 @@ data = {
     "cell": True,
 
     #Variables
-
     "brName": "",
     "name": "",
-
     "jamesInteract": False,
     "jamesInitiate": False,
     "jamesName": False,
